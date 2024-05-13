@@ -227,6 +227,35 @@
       </svg>
       <h1>Hello, {{ title }}</h1>
       <p>Congratulations! Your app is running. 🎉</p>
+      <form (ngSubmit)="convertCurrency()">
+        <div>
+          <label for="amount">Amount:</label>
+          <input type="number" id="amount" name="amount"  [(ngModel)]="amount" required>
+        </div>
+    
+        <div>
+          <label for="fromCurrency">From Currency:</label>
+          <select id="fromCurrency" name="fromCurrency" [(ngModel)]="fromCurrency" required>
+            <option value="SOL">SOL</option>
+            <option value="USD">USD</option>
+          </select>
+        </div>
+    
+        <div>
+          <label for="toCurrency">To Currency:</label>
+          <select id="toCurrency" name="toCurrency" [(ngModel)]="toCurrency" required>
+            <option value="SOL">SOL</option>
+            <option value="USD">USD</option>
+          </select>
+        </div>
+    
+        <button type="submit">Convert</button>
+    
+      <div *ngIf="convertedAmount !== undefined">
+        <p>Converted Amount: {{ convertedAmount }} {{ toCurrency }}</p>
+      </div>
+    </form>
+
     </div>
     <div class="divider" role="separator" aria-label="Divider"></div>
     <div class="right-side">
